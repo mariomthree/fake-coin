@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Coin {
 
     private int position;
@@ -26,7 +28,8 @@ public class Coin {
     
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return "Position: "+this.position +"\nWeight: "+this.weight;
+        DecimalFormat decimalFormat = new DecimalFormat();
+        decimalFormat.setMaximumFractionDigits(3);
+        return decimalFormat.format(this.weight);
     }
 }
