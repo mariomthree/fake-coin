@@ -7,7 +7,7 @@ public class FakeCoin {
     private Coin[] initializeCoins() {
         Coin[] coins = new Coin[12];
         float fixedWeight = getRandomNumber();
-        float fakeWeight = getRandomWithExclusion(fixedWeight);
+        float fakeWeight = getRandomWithExclusion(fixedWeight, fixedWeight - 0.1f, fixedWeight + 0.1f);
 
         for (int position = 0; position < coins.length; position++)
             coins[position] = new Coin(position, fixedWeight);
@@ -17,17 +17,23 @@ public class FakeCoin {
     }
 
     public float getRandomNumber() {
-        return new Random().nextFloat();
+        float number = new Random().nextFloat();
+        if(number < 0)
+            number *= -1;
+        return number;
     }
 
     public int getRandomNumber(int min, int max) {
         return new Random().nextInt(max - min + 1) + min;
     }
 
-    public float getRandomWithExclusion(float number) {
+    public float getRandomWithExclusion(float number, float min, float max) {
         float randomNumber = number;
         while (randomNumber == number)
-            randomNumber = new Random().nextFloat();
+            randomNumber = min + new Random().nextFloat() * (max - min);
+        
+        if(randomNumber < 0)
+            randomNumber *= -1;
         return randomNumber;
     }
 
