@@ -7,7 +7,7 @@ public class FakeCoin {
     private Coin[] initializeCoins() {
         Coin[] coins = new Coin[12];
         float fixedWeight = getRandomNumber();
-        float fakeWeight = getRandomWithExclusion(fixedWeight, fixedWeight - 0.1f, fixedWeight + 0.1f);
+        float fakeWeight = getRandomWithExclusion(fixedWeight);
 
         for (int position = 0; position < coins.length; position++)
             coins[position] = new Coin(position, fixedWeight);
@@ -27,10 +27,10 @@ public class FakeCoin {
         return new Random().nextInt(max - min + 1) + min;
     }
 
-    public float getRandomWithExclusion(float number, float min, float max) {
+    public float getRandomWithExclusion(float number) {
         float randomNumber = number;
         while (randomNumber == number)
-            randomNumber = min + new Random().nextFloat() * (max - min);
+            randomNumber = new Random().nextFloat();
         
         if(randomNumber < 0)
             randomNumber *= -1;
@@ -71,7 +71,7 @@ public class FakeCoin {
 
     private void showMessages(Coin left, Coin right, int status){
         String operation = "=";
-        if(status == -1)
+        if(status == 1)
             operation = " < ";
         else
            operation = " > ";
@@ -80,7 +80,7 @@ public class FakeCoin {
 
     private void showMessages(Coin[] left, Coin[] right, int status){
         String operation = "=";
-        if(status == -1)
+        if(status == 1)
             operation = " < ";
         else
            operation = " > ";
