@@ -162,11 +162,11 @@ public class FakeCoin {
         int result = compareCoins(firstGroupCoins, secondGroupCoins);
         if (result == -1) {
             if (compareCoins(groupCCoins[0], groupCCoins[1]) == -1) {
-                return groupACoins[1];
+                return groupCCoins[1];
             } else if (compareCoins(groupCCoins[0], groupCCoins[1]) == 0) {
-                return groupACoins[2];
+                return groupCCoins[2];
             }
-            return groupACoins[0];
+            return groupCCoins[0];
         } else if (result == 0) {
             return groupCCoins[3];
         } else {
@@ -182,21 +182,6 @@ public class FakeCoin {
     public static void main(String[] args) {
         FakeCoin fc = new FakeCoin();
         Coin[] coins = fc.initializeCoins();
-    
-        // Coin[] coins = {
-        // new Coin(0,2),
-        // new Coin(1,2),
-        // new Coin(2,21),
-        // new Coin(3,2),
-        // new Coin(4,2),
-        // new Coin(5,2),
-        // new Coin(6,2),
-        // new Coin(7,2),
-        // new Coin(8,2),
-        // new Coin(9,2),
-        // new Coin(10,2),
-        // new Coin(11,2),
-        // };
 
         System.out.println("\n===========\n");
         System.out.println(Arrays.asList(coins).toString() +", ");

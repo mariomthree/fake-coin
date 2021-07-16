@@ -29,7 +29,7 @@ public class Coin {
     @Override
     public String toString() {
         DecimalFormat decimalFormat = new DecimalFormat();
-        decimalFormat.setMaximumFractionDigits(3);
+        decimalFormat.setMaximumFractionDigits(2);
         return decimalFormat.format(this.weight);
     }
 }
